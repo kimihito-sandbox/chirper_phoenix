@@ -7,7 +7,7 @@ defmodule ChirperPhoenixWeb.Endpoint do
   @session_options [
     store: :cookie,
     key: "_chirper_phoenix_key",
-    signing_salt: "TKOj17+l",
+    signing_salt: "bG2YJVev",
     same_site: "Lax"
   ]
 

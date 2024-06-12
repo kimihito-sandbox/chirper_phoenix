@@ -2,13 +2,10 @@ import Config
 
 # Configure your database
 config :chirper_phoenix, ChirperPhoenix.Repo,
-  username: "postgres",
-  password: "postgres",
-  hostname: "localhost",
-  database: "chirper_phoenix_dev",
+  database: Path.expand("../chirper_phoenix_dev.db", __DIR__),
+  pool_size: 5,
   stacktrace: true,
-  show_sensitive_data_on_connection_error: true,
-  pool_size: 10
+  show_sensitive_data_on_connection_error: true
 
 # For development, we disable any cache and enable
 # debugging and code reloading.
@@ -23,7 +20,7 @@ config :chirper_phoenix, ChirperPhoenixWeb.Endpoint,
   check_origin: false,
   code_reloader: true,
   debug_errors: true,
-  secret_key_base: "CSl8ozKASs7NmtA0n/h2v1JF2QmtxyxTalRTli7dQKQgnTUEpxAVNwElkHAQgMnF",
+  secret_key_base: "QtfQFki57dvBM6WPzlQa875DR9HKpFqB/hlvrg8E6YedWlx2dviY+pNC5q/jd6dM",
   watchers: [
     esbuild: {Esbuild, :install_and_run, [:chirper_phoenix, ~w(--sourcemap=inline --watch)]},
     tailwind: {Tailwind, :install_and_run, [:chirper_phoenix, ~w(--watch)]}

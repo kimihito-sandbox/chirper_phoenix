@@ -20,7 +20,7 @@ config :chirper_phoenix, ChirperPhoenixWeb.Endpoint,
     layout: false
   ],
   pubsub_server: ChirperPhoenix.PubSub,
-  live_view: [signing_salt: "oks9G8Og"]
+  live_view: [signing_salt: "P5aUNjB6"]
 
 # Configures the mailer
 #
