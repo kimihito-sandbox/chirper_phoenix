@@ -18,6 +18,8 @@ defmodule ChirperPhoenixWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :home
+
+    get "/chirps", ChirpController, :index
   end
 
   # Other scopes may use custom stacks.
