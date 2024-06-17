@@ -1,4 +1,4 @@
-defmodule ChirperPhoenix.Chirp do
+defmodule ChirperPhoenix.Chirps.Chirp do
   use Ecto.Schema
   import Ecto.Changeset
 

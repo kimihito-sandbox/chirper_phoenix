@@ -1,0 +1,25 @@
+<.header>
+  Chirp <%= @chirp.id %>
+  <:subtitle>This is a chirp record from your database.</:subtitle>
+  <:actions>
+    <.link patch={~p"/chirps/#{@chirp}/show/edit"} phx-click={JS.push_focus()}>
+      <.button>Edit chirp</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.list>
+</.list>
+
+<.back navigate={~p"/chirps"}>Back to chirps</.back>
+
+<.modal :if={@live_action == :edit} id="chirp-modal" show on_cancel={JS.patch(~p"/chirps/#{@chirp}")}>
+  <.live_component
+    module={ChirperPhoenixWeb.ChirpLive.FormComponent}
+    id={@chirp.id}
+    title={@page_title}
+    action={@live_action}
+    chirp={@chirp}
+    patch={~p"/chirps/#{@chirp}"}
+  />
+</.modal>

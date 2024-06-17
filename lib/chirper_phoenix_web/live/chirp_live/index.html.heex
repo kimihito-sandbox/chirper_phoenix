@@ -1,0 +1,40 @@
+<.header>
+  Listing Chirps
+  <:actions>
+    <.link patch={~p"/chirps/new"}>
+      <.button>New Chirp</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.table
+  id="chirps"
+  rows={@streams.chirps}
+  row_click={fn {_id, chirp} -> JS.navigate(~p"/chirps/#{chirp}") end}
+>
+  <:action :let={{_id, chirp}}>
+    <div class="sr-only">
+      <.link navigate={~p"/chirps/#{chirp}"}>Show</.link>
+    </div>
+    <.link patch={~p"/chirps/#{chirp}/edit"}>Edit</.link>
+  </:action>
+  <:action :let={{id, chirp}}>
+    <.link
+      phx-click={JS.push("delete", value: %{id: chirp.id}) |> hide("##{id}")}
+      data-confirm="Are you sure?"
+    >
+      Delete
+    </.link>
+  </:action>
+</.table>
+
+<.modal :if={@live_action in [:new, :edit]} id="chirp-modal" show on_cancel={JS.patch(~p"/chirps")}>
+  <.live_component
+    module={ChirperPhoenixWeb.ChirpLive.FormComponent}
+    id={@chirp.id || :new}
+    title={@page_title}
+    action={@live_action}
+    chirp={@chirp}
+    patch={~p"/chirps"}
+  />
+</.modal>
